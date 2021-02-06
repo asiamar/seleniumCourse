@@ -1,0 +1,35 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class ZadanieDlaRahula2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\jmariasik\\work\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		
+		driver.get("https://www.https://www.cleartrip.com/");
+		driver.switchTo().alert().dismiss();
+		
+		/*Select select = new Select(driver.findElement(By.name("adults")));
+		select.*/
+		driver.findElement(By.id("Adultsd")).click();
+		int i=1;
+		for(int i=1; i<5; i++)
+		{
+			driver.findElement(By.id("Adultsd")).sendKeys(Keys.ARROW_DOWN);
+		}
+		
+		driver.findElement(By.id("Adultsd")).sendKeys(Keys.ENTER);
+		
+		
+		
+		
+		
+	}
+
+}

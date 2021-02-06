@@ -1,0 +1,28 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AutoSuggestive_106 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\jmariasik\\work\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://ksrtc.in/");
+		Thread.sleep(5000);
+		driver.findElement(By.name("fromPlaceName")).sendKeys("BENG");
+		driver.findElement(By.name("fromPlaceName")).sendKeys(Keys.ARROW_DOWN);
+		driver.findElement(By.name("fromPlaceName")).sendKeys(Keys.ARROW_DOWN);
+		System.out.println(driver.findElement(By.xpath("//input[@id = 'fromPlaceName']")).getText());
+		
+		//JavaSript DOM can extract hidden elements (ajax implementation)
+		
+		//JavascriptExecutor js = (JavascriptExecutor)driver;
+		
+		//String script = "document.getElementByID"
+	}
+
+}

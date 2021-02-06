@@ -1,0 +1,46 @@
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ZaznaczanieKalendarza {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\jmariasik\\work\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		
+		driver.get("https://www.path2usa.com/travel-companions");
+		
+		while(!driver.findElement(By.cssSelector("[class='datepicker-day'][class='datepicker-switch']")).getText().contains("April"))
+		{
+			
+			driver.findElement(By.cssSelector("[class='datepicker-day'][class='next']")).click();;
+		}
+		
+		
+		
+		driver.findElement(By.xpath("//input[@name='travel_date'")).click();
+		List <WebElement> dni = driver.findElements(By.cssSelector(".day"));
+		
+	System.out.println(dni.size());
+	
+	int liczbaDni = dni.size();
+		
+	for(int i=0;i<liczbaDni;i++) {
+		String numerDnia = driver.findElements(By.cssSelector(".day")).get(i).getText();
+		if(
+				numerDnia.equalsIgnoreCase("18")
+		
+				)
+			driver.findElements(By.cssSelector(".day")).get(i).click();
+		break;
+		
+	}
+		
+	}
+
+}

@@ -1,0 +1,44 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class ZadanieDlaRahula2 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\jmariasik\\work\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		
+		driver.get("https://www.cleartrip.com/");
+		Thread.sleep(2000);
+		//driver.switchTo().alert().accept();
+		
+		Select select = new Select(driver.findElement(By.name("adults")));
+		select.selectByIndex(5);
+		/*driver.findElement(By.id("Adultsd")).click();
+	
+		for(int i=1;i<5;i++)
+		{
+			driver.findElement(By.id("Adultsd")).sendKeys(Keys.ARROW_DOWN);
+		}
+		
+		driver.findElement(By.id("Adultsd")).sendKeys(Keys.ENTER);
+		
+		*/
+		
+		Select children = new Select(driver.findElement(By.name("childs")));
+		children.selectByIndex(2);
+		//kalendarz
+		driver.findElement(By.cssSelector(".depart_date.keyValue.span.span24.required.hasDatepicker.invalid.ugly.placeholder")).click();
+		driver.findElement(By.cssSelector(".ui-state-default.ui-state-highlight.ui-state-active.")).click();
+		driver.findElement(By.id("MoreOptionsLink")).click();
+		driver.findElement(By.id("AirlineAutocomplete")).sendKeys("indigo");
+		driver.findElement(By.id("SearchBtn")).click();
+		
+		
+	}
+
+}

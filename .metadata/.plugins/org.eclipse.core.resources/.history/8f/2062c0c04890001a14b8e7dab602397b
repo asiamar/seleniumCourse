@@ -1,0 +1,59 @@
+import java.util.Arrays;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Addtochartwait {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\jmariasik\\work\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://rahulshettyacademy.com/seleniumPractise/");
+	
+		String warzywa [] = {"Cucumber", "Brocolli", "Beetroot", "Carrot"};
+		Thread.sleep(3000);
+		
+		addItems(driver, warzywa);  //wywo³ujemy metode z zewnatrz i w nawiasie dajemy arguments
+		
+		}
+		
+	
+	public static void addItems(WebDriver driver, String warzywa []) //ttaj do nawiasu wstawiamy nasze zmienne, których uzywamy
+	{
+List al = Arrays.asList(warzywa);
+int j = 0; //dodajemy zmienna, bo chcemy zatrzymac petle w któryms momencie
+		List<WebElement> WszystkieWarzywa = (driver.findElements(By.cssSelector("h4.product-name"))); //nasz kod nie wie co to jest driver dlatego wpisujemy go w nawias
+		for(int i=0; i<WszystkieWarzywa.size(); i++)
+		{
+			String[] NazwaWarzywa = WszystkieWarzywa.get(i).getText().split("-"); //podsiwetli³o sie bo teraz mamy dwie czesci jedna z indexem left, a druga z indeksem right, dlatego prosz¹ Ciê o zmiane zmiennej string na zmienna tablicowa
+			String SformatowanaNazwaWarzywa = NazwaWarzywa[0].trim(); // teraz nalezy utworzyc nowa zmienna mojej lewej strony
+			
+			//check whether name you extracted is present in array or not
+			//convert array into array list for easy search
+						
+			
+			if(al.contains(SformatowanaNazwaWarzywa)) //s³owo z indeksem i jest równe naszemu s³owu, wiec wpada do petli
+			{
+				
+				j++;
+				driver.findElements(By.xpath("//div[@class='product-action']/button")).get(i).click(); //wez element nasz o indeksie warzywa (czyli np.3) i kliknij w niego
+				
+				if(j==warzywa.length) // zamiast liczby mo¿emy daæ ilosc naszych warzyw na tablicy - nie w liscie
+					{break;
+					}
+					}
+			}
+	}
+		
+	}
+
+
+
+	
+
+

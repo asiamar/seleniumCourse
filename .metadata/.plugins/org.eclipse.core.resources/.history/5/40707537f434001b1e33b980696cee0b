@@ -1,0 +1,22 @@
+package Test;
+
+import org.testng.annotations.Test;
+
+public class day1 {
+
+
+	
+// TODO Auto-generated method stub
+	@Test
+	public void Demo()
+	{
+System.out.println("hello");
+	}
+
+	@Test
+	public void SecondDemo()
+	{
+System.out.println("bye");
+	}
+	
+}

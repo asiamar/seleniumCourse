@@ -1,0 +1,19 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AutoSuggestive_106 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\jmariasik\\work\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://www.makemytrip.com/");
+		driver.findElement(By.xpath("//input[@type = 'text']")).click();
+		driver.findElement(By.xpath("//input[@type = 'text']")).sendKeys("MUM");
+		driver.findElement(By.xpath("//input[@type = 'text']")).sendKeys(Keys.ENTER);
+	}
+
+}

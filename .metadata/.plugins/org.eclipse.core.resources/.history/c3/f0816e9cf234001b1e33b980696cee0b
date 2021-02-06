@@ -1,0 +1,27 @@
+package Test;
+
+import org.testng.annotations.Test;
+
+public class day3 {
+
+	
+	@Test
+	public void MobileaLoginCarLoan()
+	{
+	//sellenium
+		System.out.println("MobileaLoginCarLoan");
+	}
+	
+	@Test
+	public void MobileLoginCarLoan()
+	{
+	//appium
+		System.out.println("MobileLoginCarLoan");
+	}
+	@Test
+	public void APILoginCarLoan()
+	{
+	//rest api automation
+		System.out.println("APILoginCarLoan");
+	}
+}

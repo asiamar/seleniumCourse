@@ -1,0 +1,40 @@
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class JakOprogramowacTabelke {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\jmariasik\\work\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		
+		
+		WebElement tablica = driver.findElement(By.className("cb-col cb-col-100 cb-ltst-wgt-hdr"));
+		if(driver.findElement(By.cssSelector("[.'cb-col cb-col-100 cb-ltst-wgt-hdr'] [.'cb-col cb-col-100 cb-scrd-hdr-rw']")).getText().equals("Sunrisers Hyderabad Innings"))
+		{
+			int liczbaWierszy = tablica.findElements(By.className("cb-col cb-col-100 cb-scrd-itms")).size();
+			System.out.println(liczbaWierszy);
+			List <WebElement> listaWartosciWTrzeciejKolumnie = tablica.findElements(By.cssSelector("[.'cb-col cb-col-100 cb-scrd-itms'] div:nth-child(3)"));
+			int liczbaWartosciW3Kolumnie = listaWartosciWTrzeciejKolumnie.size();
+			
+			for(int i=0;i<liczbaWartosciW3Kolumnie;i++)
+			{
+				System.out.println(listaWartosciWTrzeciejKolumnie.get(i).getText());
+			}
+			
+			
+		}
+		
+		tablica.findElements(By.className("cb-col cb-col-100 cb-scrd-itms"))
+		cb-col cb-col-100 cb-scrd-hdr-rw
+		
+				
+				
+	}
+
+}

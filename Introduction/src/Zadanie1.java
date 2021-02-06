@@ -1,0 +1,36 @@
+import java.util.List;
+import java.util.Arrays;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Zadanie1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\jmariasik\\work\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
+		
+		List<WebElement> EtykietyWarzyw = (driver.findElements(By.xpath("//h4[@class='product-name']")));
+		
+		int i=0;
+		while(i<EtykietyWarzyw.size()) {
+			if(
+					EtykietyWarzyw.get(i).getText().contains("Cucumber")
+					)
+			
+				{driver.findElements(By.xpath("//div[@class='product-action']/button")).get(i).click();
+			break;
+				}
+			i++;
+			
+		}
+			
+		
+			
+	}
+
+}

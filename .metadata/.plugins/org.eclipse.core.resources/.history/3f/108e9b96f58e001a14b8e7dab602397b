@@ -1,0 +1,41 @@
+import java.util.Arrays;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Addtochart2weggie {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\jmariasik\\work\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+
+		driver.get("https://rahulshettyacademy.com/seleniumPractise/");
+
+		String warzywa [] = {"Cucumber", "Brocolli"};
+		
+		List<WebElement> WszystkieWarzywa = (driver.findElements(By.cssSelector(".product-name")));
+		for(int i=0; i<WszystkieWarzywa.size(); i++)
+		{
+			String[] NazwaWarzywa = WszystkieWarzywa.get(i).getText().split("-"); //podsiwetli³o sie bo teraz mamy dwie czesci jedna z indexem left, a druga z indeksem right, dlatego prosz¹ Ciê o zmiane zmiennej string na zmienna tablicowa
+			String SformatowanaNazwaWarzywa = NazwaWarzywa[0].trim(); // teraz nalezy utworzyc nowa zmienna mojej lewej strony
+			
+			//check whether name you extracted is present in array or not
+			//convert array into array list for easy search
+			List al = Arrays.asList(warzywa);
+			
+			if(al.contains(SformatowanaNazwaWarzywa))
+			{
+				driver.findElements(By.xpath("//button[contains(text(),'ADD TO CART')]")).get(i).click();
+			}
+		}
+		
+		
+	}
+
+}

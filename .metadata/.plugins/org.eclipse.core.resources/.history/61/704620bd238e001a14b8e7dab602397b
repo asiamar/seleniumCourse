@@ -1,0 +1,100 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+
+public class EndToEnd {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\jmariasik\\work\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://www.spicejet.com/");
+		Thread.sleep(8000);
+		
+		if(driver.findElement(By.id("ctl00_mainContent_rbtnl_Trip_0")).isSelected())
+		{
+		Assert.assertTrue(true);	
+		System.out.println("one way jest wybrane");
+		}
+		else
+			Assert.assertTrue(false);
+	
+		driver.findElement(By.cssSelector("#ctl00_mainContent_chk_friendsandfamily")).click();
+		Thread.sleep(2000);
+		System.out.println(driver.findElement(By.id("ctl00_mainContent_chk_friendsandfamily")).isSelected());
+		Thread.sleep(2000);
+		driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//a[@value='DEL']")).click();
+		driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT")).sendKeys("del");
+		Thread.sleep(2000);
+		if(driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT")).getAttribute("value").contains("Delhi"))
+		{
+			Assert.assertTrue(true);
+			System.out.println("wybrano delhi");
+		}
+		else
+		{
+			Assert.assertTrue(false);
+			
+		}
+		Thread.sleep(2000);
+		driver.findElement(By.id("ctl00_mainContent_ddl_destinationStation1_CTXT")).sendKeys("MAA");
+		Thread.sleep(2000);
+		if(driver.findElement(By.id("ctl00_mainContent_ddl_destinationStation1_CTXT")).getAttribute("value").contains("Chennai"))
+		{
+			Assert.assertTrue(true);
+			System.out.println("wybrano chennai");
+		}
+		else
+		{
+			Assert.assertTrue(false);
+			
+		}
+		Thread.sleep(2000);
+		driver.findElement(By.cssSelector(".ui-state-default.ui-state-highlight.ui-state-active")).click();
+		Thread.sleep(2000);
+		
+		System.out.println(driver.findElement(By.id("Div1")).getAttribute("style"));
+		System.out.println(driver.findElement(By.id("Div1")).getAttribute("style").contains("1"));
+		
+		if(!driver.findElement(By.id("Div1")).getAttribute("style").contains("1"))
+		{
+			Assert.assertFalse(false);
+		}
+		else
+		{
+			Assert.assertFalse(true);
+		}
+		
+		driver.findElement(By.cssSelector("#divpaxinfo")).click();
+		Thread.sleep(2000);
+		WebElement pasazerowie = driver.findElement(By.cssSelector("#ctl00_mainContent_ddl_Adult"));
+		pasazerowie.click();
+		Thread.sleep(2000);
+		for(int i=1;i<5;i++)
+		{
+			pasazerowie.sendKeys(Keys.ARROW_DOWN);
+		}
+		Thread.sleep(2000);
+		pasazerowie.sendKeys(Keys.ENTER);
+		Thread.sleep(2000);
+		
+		
+		Assert.assertEquals(driver.findElement(By.cssSelector("#divpaxinfo")).getText(), "5 Adult");
+		driver.findElement(By.cssSelector("#divpaxinfo")).click();
+		driver.findElement(By.id("ctl00_mainContent_btn_FindFlights")).click();
+		
+		
+		
+		
+	}
+	
+	
+
+}

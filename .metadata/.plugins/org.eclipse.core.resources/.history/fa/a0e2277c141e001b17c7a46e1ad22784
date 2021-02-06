@@ -1,0 +1,66 @@
+import java.util.ArrayList;
+import java.util.stream.Stream;
+
+import org.testng.annotations.Test;
+
+public class stream {
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		/*
+		ArrayList <String> names = new ArrayList();
+		names.add("Asia");
+		names.add("Ewa");
+		names.add("Micha³");
+		names.add("Mateusz");
+		names.add("Anna");
+		int a = 0;
+		
+		int licznaimion = names.size();
+				
+				for(int i=0; i<licznaimion; i++)
+				{
+					String actual = names.get(i);
+					if(actual.startsWith("A"))
+					{
+						a++;
+					}	
+				}
+				
+				System.out.println(a);	
+	}
+*/
+
+
+
+		ArrayList <String> names = new ArrayList<String>();
+		names.add("Asia");
+		names.add("Ewa");
+		names.add("Micha³");
+		names.add("Ala");
+		names.add("Anna");
+		
+		
+		//there is no life for intermediate opif there is no terminal operation
+		//terminal operation will execute only if inter op(filter) returns true - czyli jesli po naszym filtrowaniu nowa lista nie bedzie mia³a zadnych danych to operacja (count) sie nie wykona
+		//we can create streamwith stream packet
+		//how to use filter with stream API
+		long imionka = names.stream().filter(a->a.startsWith("A")).count();  //typ danych to Long tutaj
+		System.out.println(imionka);
+		
+		long d = Stream.of("Asia", "Ewa", "Maicha³", "Mateusz", "Ala", "Anna").filter(b->
+		
+			b.startsWith("A") //mo¿na utworzyc kolekcje w ten sposób, zamiast arrea jak wczesniej, mo¿na tez w taki sposób kilka operacji wylistowac
+			
+		).count();
+		System.out.println(d);
+	}
+	
+	
+	
+}
+	
+	
+
+

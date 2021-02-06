@@ -1,0 +1,41 @@
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class JakOprogramowacTabelke {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\jmariasik\\work\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://www.cricbuzz.com/live-cricket-scorecard/30365/kkr-vs-srh-8th-match-indian-premier-league-2020");
+		Thread.sleep(8000L);
+		WebElement tablica = driver.findElement(By.cssSelector("[class='cb-col cb-col-100 cb-ltst-wgt-hdr']"));
+		if(driver.findElement(By.cssSelector("[class='cb-col cb-col-100 cb-ltst-wgt-hdr'] [class='cb-col.cb-col-100 cb-scrd-hdr-rw']")).getText().equals("Sunrisers Hyderabad Innings"))
+		{
+			int liczbaWierszy = tablica.findElements(By.className("cb-col.cb-col-100.cb-scrd-itms")).size();
+			System.out.println(liczbaWierszy);
+			List <WebElement> listaWartosciWTrzeciejKolumnie = tablica.findElements(By.cssSelector("[class='cb-col.cb-col-100.cb-scrd-itms'] div:nth-child(3)"));
+			int liczbaWartosciW3Kolumnie = listaWartosciWTrzeciejKolumnie.size();
+			
+			//for(int i=0;i<liczbaWartosciW3Kolumnie;i++)
+			//{
+			//	System.out.println(listaWartosciWTrzeciejKolumnie.get(i).getText());
+			//}
+		
+			for(int i=0;i<liczbaWartosciW3Kolumnie-2;i++)
+			{
+				System.out.println(listaWartosciWTrzeciejKolumnie.get(i).getText());
+			}
+		}
+		
+
+				
+				
+	}
+
+}

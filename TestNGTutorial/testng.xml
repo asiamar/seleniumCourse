@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Loan Department" parallel="tests" thread-count="2">  
+<listeners>
+<listener class-name = "Test.Listeners"/>
+</listeners>
+  <test  name="Personal Loan">  
+    <parameter name = "URL" value = "facebook.com"/>
+    <parameter name = "URL2" value = "facebook.com2"/>
+    <classes>  
+      <class name="Test.day1">
+      <methods>
+      <include name = ".*"/>
+      </methods>
+      </class>
+      <class name="Test.day2"/> 
+      <class name="Test.day4"/> 
+      </classes> 
+  </test> 
+  <test name =  "Car Loan">  
+    <classes>  
+      <class name="Test.day3"/>
+      </classes> 
+  </test>
+</suite> 

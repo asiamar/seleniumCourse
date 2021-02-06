@@ -1,0 +1,38 @@
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+
+public class CheckBoxRadioButton {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+System.setProperty("webdriver.chrome.driver", "C:\\Users\\jmariasik\\work\\chromedriver.exe");
+				WebDriver driver=new ChromeDriver();
+				
+				driver.get("https://www.spicejet.com/");
+				driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+				Assert.assertFalse(driver.findElement(By.xpath("//input[@value='RoundTrip']")).isSelected());
+				//stem.out.println("radiobutton" + (driver.findElement(By.xpath("//input[@value='RoundTrip']")).isSelected()));--czyli zamiast sprawdzac, czy jest zaznaczone i wyswietklac odpowiedz, dalemy warunek z asercja, dzieki czemu gdy warunek nie jest spe³niony to test sie wywala
+				
+				driver.findElement(By.xpath("//input[@value='RoundTrip']")).click();
+					System.out.println(driver.findElement(By.xpath("//input[@value='RoundTrip']")).isSelected());
+					Assert.assertTrue(driver.findElement(By.xpath("//input[@value='RoundTrip']")).isSelected());
+					System.out.println(driver.findElements(By.xpath("//input[@type='radio']")).size());
+					
+					//input[@type='radio']k
+					
+				System.out.println(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+				driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).click();
+				System.out.println(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+		
+		
+				System.out.println(driver.findElements(By.xpath("//input[@type='checkbox']")).size());
+				
+				Assert.assertEquals(driver.findElement(By.xpath("//div[@id='divpaxinfo']")).getText(),"Adult1");
+	}
+
+}
